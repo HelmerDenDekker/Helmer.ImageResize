@@ -1,0 +1,2 @@
+# Helmer.ImageResize
+Resizing images

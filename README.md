@@ -1,2 +1,6 @@
 # Helmer.ImageResize
-Resizing images
+
+## About
+Research for a package to resize images.
+
+

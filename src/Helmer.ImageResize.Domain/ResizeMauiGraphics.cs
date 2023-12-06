@@ -6,40 +6,31 @@ namespace Helmer.ImageResize.Domain;
 
 public class ResizeMauiGraphics
 {
-	// inputs width, height, resizemode, disposeOriginal
+    // inputs width, height, resizemode, disposeOriginal
 
-	public void ImageResize(int size, string sourcePath, string destinationPath, int quality)
-	{
-		
+    public void ImageResize(int size, string sourcePath, string destinationPath, int quality)
+    {
+
         //Load
         IImage image;
-		//Assembly assembly = GetType().GetTypeInfo().Assembly;
-		using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
-		{
-			image = PlatformImage.FromStream(stream);
-		}
-		var scaled = SizeLogic.ScaledSize(image.Width, image.Height, size);
-		//Resize
-		if (image != null)
-		{
-			IImage newImage = image.Resize(scaled.width, scaled.height, ResizeMode.Stretch, true);
-			//Displayed
-			//canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
-		}
+        //Assembly assembly = GetType().GetTypeInfo().Assembly;
+        using (var output = File.Open(FileNameLogic.OutputPath(sourcePath, destinationPath, "Maui"), FileMode.Create))
+        {
+            image = PlatformImage.FromStream(output);
 
-		// Save image to a memory stream
-		if (image != null)
-		{
-			IImage newImage = image.Downsize(150, true);
-			using (MemoryStream memStream = new MemoryStream())
-			{
-				newImage.Save(memStream);
-			}
-		}
-	}
+            var scaled = SizeLogic.ScaledSize(image.Width, image.Height, size);
+            //Resize
 
-	public void ImageDownsize(IImage image)
-	{
-		IImage newImage = image.Downsize(100, true);
-	}
+            IImage newImage = image.Resize(scaled.width, scaled.height, ResizeMode.Stretch, true);
+            //Displayed
+            //canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
+
+            newImage.Save(output);
+        }
+    }
+
+    public void ImageDownsize(IImage image)
+    {
+        IImage newImage = image.Downsize(100, true);
+    }
 }

@@ -7,7 +7,7 @@ public class ResizeMagickNet
 {
 	public void ImageResize(int size, string sourcePath, string destinationPath, int quality)
     {
-		using (var image = new MagickImage(destinationPath))
+		using (var image = new MagickImage(sourcePath))
 		{
             var scaled = SizeLogic.ScaledSize(image.Width, image.Height, size);
             image.Resize(scaled.width, scaled.height);

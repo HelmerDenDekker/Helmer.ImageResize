@@ -16,7 +16,7 @@ public class ResizeImageSharp
 		var imageSharpJpegEncoder = new JpegEncoder() { Quality = quality, ColorType = JpegEncodingColor.YCbCrRatio420 };
 		using (var output = File.Open(FileNameLogic.OutputPath(sourcePath, destinationPath, "ImageSharp"), FileMode.Create))
 		{
-			// Resize it to fit a 150x150 square
+			
 			using (var image = Image.Load(sourcePath))
 			{
 				var scaled = SizeLogic.ScaledSize(image.Width, image.Height, size);

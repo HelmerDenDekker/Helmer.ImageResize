@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Net.Mime;
 using Helmer.ImageResize.Domain.Extensions;
 using PhotoSauce.MagicScaler;
 

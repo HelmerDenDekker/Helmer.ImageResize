@@ -43,13 +43,6 @@ public class ShortRunWithMemoryDiagnoserConfig : ManualConfig
 			this.AddFilter(new NameFilter(name => !name.StartsWith("Magick")));
 		}
 
-		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
-			RuntimeInformation.OSArchitecture == Architecture.Arm64)
-		{
-			// FreeImage native binaries are not available for Windows ARM64
-			this.AddFilter(new NameFilter(name => !name.StartsWith("FreeImage")));
-		}
-
 		#if Windows_NT
             // See https://github.com/microsoft/perfview/issues/1264
             if (this.IsElevated && RuntimeInformation.OSArchitecture != Architecture.Arm64)

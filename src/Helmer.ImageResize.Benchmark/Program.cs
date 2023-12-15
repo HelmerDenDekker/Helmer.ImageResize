@@ -1,6 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
 using Helmer.ImageResize.Benchmark;
-using Helmer.ImageResize.Domain;
 
 public class Program
 {

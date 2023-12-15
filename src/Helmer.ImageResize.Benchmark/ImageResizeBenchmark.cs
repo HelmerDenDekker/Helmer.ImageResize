@@ -1,12 +1,10 @@
 ﻿using BenchmarkDotNet.Attributes;
-using Helmer.ImageResize.Domain;
+using Helmer.ImageResize.Domain.Resize;
 
 namespace Helmer.ImageResize.Benchmark;
 
 public class ImageResizeBenchmark
 {
-    //ToDo List of images you want to resize.
-
 	private int size = 150;
 	private int quality = 75;
 
@@ -22,9 +20,6 @@ public class ImageResizeBenchmark
 
     [Benchmark]
 	public void ResizeMagicScaler() => new ImageService().MagicScalerBenchmark(size, quality);
-
-    [Benchmark]
-	public void ResizeMauiGraphics() => new ImageService().MauiGraphicsBenchmark(size, quality);
 
     [Benchmark]
 	public void ResizeSkiaSharp() => new ImageService().SkiaSharpBenchmark(size, quality);

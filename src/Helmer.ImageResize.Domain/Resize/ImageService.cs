@@ -52,6 +52,23 @@ public class ImageService
             new ResizeSkiaSharp().ImageResize(size, image, _outputDirectory, quality);
         }
     }
+	public void FreeImageBenchmark(int size, int quality)
+	{
+		foreach (string image in _images)
+		{
+			new ResizeFreeImage().ImageResize(size, image, _outputDirectory, quality);
+		}
+	}
+
+	public void ImageFlowBenchmark(int size, int quality)
+	{
+		foreach (string image in _images)
+		{
+			new ResizeImageFlow().ImageResize(size, image, _outputDirectory, quality);
+		}
+	}
+
+
 
 
 

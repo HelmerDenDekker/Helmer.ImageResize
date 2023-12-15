@@ -8,7 +8,7 @@ public class ImageResizeBenchmark
 	private int size = 150;
 	private int quality = 75;
 
-	[Benchmark]
+	[Benchmark (Baseline = true)]
 	public void ResizeDrawing() => new ImageService().SystemDrawingBenchmark(size, quality);
 
     [Benchmark]
@@ -23,4 +23,10 @@ public class ImageResizeBenchmark
 
     [Benchmark]
 	public void ResizeSkiaSharp() => new ImageService().SkiaSharpBenchmark(size, quality);
+
+	[Benchmark]
+	public void ResizeFreeImage() => new ImageService().FreeImageBenchmark(size, quality);
+
+	[Benchmark]
+	public void ResizeImageFlow() => new ImageService().ImageFlowBenchmark(size, quality);
 }

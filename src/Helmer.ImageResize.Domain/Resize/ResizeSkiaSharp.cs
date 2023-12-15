@@ -2,7 +2,9 @@
 using SkiaSharp;
 
 namespace Helmer.ImageResize.Domain.Resize;
-
+/// <summary>
+/// https://schwabencode.com/blog/2019/06/11/Resize-Image-NET-Core Skia was made to be fast
+/// </summary>
 public class ResizeSkiaSharp
 {
     public void ImageResize(int size, string sourcePath, string destinationPath, int quality)
